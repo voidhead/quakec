@@ -1,0 +1,98 @@
+/*
+
+client/vars.qc
+
+Variables that are needed in CSQC can be defined here.
+
+*/
+
+//vector	vid_size, hud_size;
+
+float	autocvar_vid_conwidth;
+float	autocvar_vid_conheight;
+float	autocvar_vid_pixelheight;
+
+float	autocvar_chase_active;
+float	autocvar_chase_back;
+float	autocvar_chase_up;
+float	autocvar_chase_pitchangle;
+
+float	autocvar_volume;
+float	autocvar_bgmvolume;
+float	autocvar_snd_initialized;
+float	autocvar_cdaudioinitialized;
+float 	autocvar_scr_centertime;
+
+float 	autocvar_con_log_centerprint;
+
+float	maxclients;
+
+float	vid_width;
+float	vid_height;
+float	vid_conwidth;
+float	vid_conheight;
+float	vid_pixelheight;
+
+vector	view_angles;
+vector	view_punchangle;
+vector	view_punchvector;
+
+//vector	setvieworg;
+//vector	setviewang;
+//vector	input_angles_old;
+//vector	input_chasecam_angles_old;
+
+//vector	CLIENT_VIEW_OFS		= '0 0 22';
+//vector	CLIENT_VIEW_OFS_GIB	= '0 0 22';
+
+//================================================
+// weapon slots
+//================================================
+float	slot1impulse[4];
+float	slot2impulse[4];
+float	slot3impulse[4];
+float	slot4impulse[4];
+float	slot5impulse[4];
+
+float	slot1item[4];
+float	slot2item[4];
+float	slot3item[4];
+float	slot4item[4];
+float	slot5item[4];
+
+float	slot1ammo[4];
+float	slot2ammo[4];
+float	slot3ammo[4];
+float	slot4ammo[4];
+float	slot5ammo[4];
+
+float	slot1ammo2[4];
+float	slot2ammo2[4];
+float	slot3ammo2[4];
+float	slot4ammo2[4];
+float	slot5ammo2[4];
+
+float	slot_currentpos;
+float	slot_nextpos;
+float	slot_foundpos;
+float	slot_fullcheck;
+
+float	WC_SUCCESS	= 0;
+float	WC_NOWEAPON 	= 1;
+float	WC_NOAMMO	= 2;
+float	WC_LOWAMMO	= 3;
+float	WC_NOCHANGE	= 4;
+
+//================================================
+// volume control
+//================================================
+float	VOLUME_INCREMENT	= 0.05;
+float	SLIDER_RANGE		= 10;
+vector	MENU_COLOR_NORMAL	= '1 1 1';
+vector	MENU_COLOR_DISABLED	= '0.4 0.4 0.4';
+
+float	vc_active;
+float	vc_pos;
+float	vc_sfx_vol_bak;
+float	vc_bgm_vol_bak;
+//float	vcaccess;

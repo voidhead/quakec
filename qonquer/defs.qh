@@ -1,0 +1,81 @@
+//===========================================================================
+// entity Fields
+//===========================================================================
+
+// shooter traps
+//.float	active;				// If 1, the entity is active
+
+// Monster factories
+.float	spawnwavestart;			// The wave number where this monster can start spawning
+.float	spawnwaveend;			// The wave number where this monster will stop spawning
+.void()	spawnfactory;			// Does the spawning of the monster
+.float	sinkdistance;			// How far this corpse has to sink into the ground still
+.float	available;			// A temp variable used when searching for valid factories to use
+
+// info_qonquer
+.float	countdown;
+.float	currentwave;			// The current wave number we are on
+.float	num_monsters_alive;		// How many monsters are running around alive
+.float	num_monsters_killed;
+.float	num_monsters_allowed_alive;	// How many monsters are allowed to be alive in this wave
+.float	num_monsters_in_wave;		// How many monsters are in this wave, in total.
+.float	spawn_delay;			// How long to wait between thinks when spawning monsters
+.float	num_minions_allowed_alive;	// How many minions are allowed to be alive
+
+.float	stat_soldierkills, stat_dogkills, stat_demonkills, stat_enforcerkills, 
+	stat_fishkills, stat_hellknightkills, stat_knightkills, stat_shalrathkills, 
+	stat_shamblerkills, stat_tarbabykills, stat_wizardkills, stat_zombiekills, stat_ogrekills;
+
+.float	stat_minionskilled;
+
+// info_qonquer_wave
+.float	wave;				// The wave we are referencing
+.string	targetstart;			// The event to fire off at the start of this round
+.string	targetend;			// The event to fire off at the end of this round
+
+// info_player_start
+.float	regen_time;			// When the player will next regenerate a health point
+
+// monster_minion
+.string	minion_class;			// The class you want to spawn as the players minion
+					// These match the monster_ classes, but without the monster_ prefix.
+					// So, "ogre" spawns a "monster_ogre"
+
+.float	minion;				// Set to TRUE so the code can know which monsters are friendly.
+.float	minion_time;			// The time when we will try to spawn a new minion
+
+// monster_minion, info_qonquer, info_qonquer_wave
+.string	arenaname;			// The name of the arena (only entities with matching arenanames will function together)
+
+//===========================================================================
+// globals
+//===========================================================================
+entity	qonquer;
+float	red;
+float	msg_mode;
+
+//===========================================================================
+// constants
+//===========================================================================
+float	FL_MONSTERFACTORY		= 524288; // Set on monster entities that are going to act like factories
+
+float	SPAWNFLAG_TRIGGERABLE		= 4;	// Monster doesn't spawn in until triggered
+float	SPAWNFLAG_MONSTERFACTORY	= 8;	// Monster is used as a placeholder for spawning many monsters
+
+float	BACKPACK_SUPER_SHOTGUN		= 1;	// Golden backpack contents
+float	BACKPACK_NAILGUN		= 2;
+float	BACKPACK_SUPER_NAILGUN		= 4;
+float	BACKPACK_GRENADE_LAUNCHER	= 8;
+float	BACKPACK_ROCKET_LAUNCHER	= 16;
+float	BACKPACK_LIGHTNING		= 32;
+
+float	AS_MINION			= 5;		// Attack state for monster_minion
+
+float	MINION_SCALE			= 1.1875;
+
+float	MAX_WAVE			= 999;
+
+float	RED_ON				= 128;
+float	RED_OFF				= 0;
+float	RED_GOLD			= -30;
+float	WIDTH				= 30;

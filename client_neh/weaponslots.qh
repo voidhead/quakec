@@ -1,0 +1,30 @@
+void() InitWeaponSlots =
+{
+	dprint("CSQC: Init weapon slots...\n");
+
+	slot1impulse[0] = 3;	slot1item[0] = IT_SUPER_SHOTGUN;     slot1ammo[0] = STAT_SHELLS;   slot1ammo2[0] = 2;
+	slot1impulse[1] = 100;	slot1item[1] = IT_AUTO_SHOTGUN;	     slot1ammo[1] = STAT_SHELLS;   slot1ammo2[1] = 0;
+	slot1impulse[2] = 2;	slot1item[2] = IT_SHOTGUN;	     slot1ammo[2] = STAT_SHELLS;   slot1ammo2[2] = 0;
+	slot1impulse[3] = 1;	slot1item[3] = IT_SWORD;	     slot1ammo[3] = -1;		   slot1ammo2[3] = 0;
+
+	slot2impulse[0] = 5;	slot2item[0] = IT_SUPER_NAILGUN;     slot2ammo[0] = STAT_NAILS;	   slot2ammo2[0] = 2;
+	slot2impulse[1] = 4;	slot2item[1] = IT_NAILGUN;	     slot2ammo[1] = STAT_NAILS;	   slot2ammo2[1] = 0;
+	slot2impulse[2] = 0;	slot2item[2] = 0;		     slot2ammo[2] = 0;		   slot2ammo2[2] = 0;
+	slot2impulse[3] = 0;	slot2item[3] = 0;		     slot2ammo[3] = 0;		   slot2ammo2[3] = 0;
+
+	slot3impulse[0] = 7;	slot3item[0] = IT_ROCKET_LAUNCHER;   slot3ammo[0] = STAT_ROCKETS;  slot3ammo2[0] = 0;
+	slot3impulse[1] = 6;	slot3item[1] = IT_GRENADE_LAUNCHER;  slot3ammo[1] = STAT_ROCKETS;  slot3ammo2[1] = 0;
+	slot3impulse[2] = 9;	slot3item[2] = IT_SPROCKET;	     slot3ammo[2] = STAT_ROCKETS;  slot3ammo2[2] = 0;
+	slot3impulse[3] = 0;	slot3item[3] = 0;		     slot3ammo[3] = 0;		   slot3ammo2[3] = 0;
+
+	slot4impulse[0] = 8;	slot4item[0] = IT_LIGHTNING;	     slot4ammo[0] = STAT_CELLS;    slot4ammo2[0] = 0;
+	slot4impulse[1] = 0;	slot4item[1] = 0;		     slot4ammo[1] = 0;		   slot4ammo2[1] = 0;
+	slot4impulse[2] = 0;	slot4item[2] = 0;		     slot4ammo[2] = 0;		   slot4ammo2[2] = 0;
+	slot4impulse[3] = 0;	slot4item[3] = 0;		     slot4ammo[3] = 0;		   slot4ammo2[3] = 0;
+
+	slot5impulse[0] = 0;	slot5item[0] = 0;		     slot5ammo[0] = 0;		   slot5ammo2[0] = 0;
+	slot5impulse[1] = 0;	slot5item[1] = 0;		     slot5ammo[1] = 0;		   slot5ammo2[1] = 0;
+	slot5impulse[2] = 0;	slot5item[2] = 0;		     slot5ammo[2] = 0;		   slot5ammo2[2] = 0;
+	slot5impulse[3] = 0;	slot5item[3] = 0;		     slot5ammo[3] = 0;		   slot5ammo2[3] = 0;
+
+};

@@ -1,0 +1,6 @@
+float 	IT_CHAINSAW		= 8388608;	//dhm - Chainsaw
+float	IT_SPEAR		= 128;
+
+.float	items2;
+//float	IT2_WINGS		= 1;		//dhm - Angel-wings
+float	IT2_SRE     		= 256;		//dhm - ScREw Gun 

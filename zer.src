@@ -1,0 +1,51 @@
+progs_zer.dat
+
+zer/defs.qc
+zer/subs.qc
+zer/fight.qc
+zer/ai.qc
+zer/combat.qc
+zer/items.qc
+zer/weapons.qc
+zer/world.qc
+zer/client.qc
+zer/player.qc
+
+zer/cutscene.qc    	// dhm - Movie-making stuff
+zer/frames.qc		// dhm - frame animation
+zer/hostage.qc		// dhm - hostage/gib-testing
+zer/bloodcb.qc		// dhm - The bloodcube
+zer/chainlit.qc		// dhm - The Crucify Spear
+zer/wall.qc		// dhm - Exploding wall
+zer/pbeam.qc		// dhm - The Stun gun
+
+zer/hipsound.qc		// dhm - Hipnotic Sound entities
+//hiprot.qc		// dhm - Hipnotic rotation
+//hipsubs.qc		// dhm - Hipnotic SUB routines
+
+zer/monsters.qc
+zer/doors.qc
+zer/buttons.qc
+zer/triggers.qc
+zer/plats.qc
+zer/misc.qc
+zer/ogre.qc
+zer/demon.qc
+zer/shambler.qc
+zer/knight.qc
+zer/soldier.qc
+zer/wizard.qc
+zer/dog.qc
+zer/zombie.qc
+zer/boss.qc
+
+zer/trog.qc		// Troglodyte - Zerstorer!!
+zer/enforcer.qc		// registered
+zer/enforce2.qc		// Mega-enforcer - Zerstorer!!
+zer/turret.qc		// dhm - laser turret
+zer/zerst.qc		// dhm - The Zerstörer!!
+zer/tarbaby.qc		// registered
+zer/hknight.qc		// registered
+zer/fish.qc		// registered
+zer/shalrath.qc		// registered
+zer/oldone.qc		// registered

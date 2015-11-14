@@ -1,0 +1,219 @@
+/*
+==============================================================================
+
+			CONSTANT DEFINITIONS
+
+==============================================================================
+*/
+
+// add-entity mask bits
+float	MASK_ENGINE		= 1;
+float	MASK_ENGINEVIEWMODELS	= 2;
+float	MASK_NORMAL		= 4;
+
+// renderflag bits
+float	RF_VIEWMODEL		= 1;
+float	RF_EXTERNALMODEL	= 2;
+float	RF_DEPTHHACK		= 4;
+float	RF_ADDITIVE		= 8;
+float	RF_USEAXIS		= 16;
+
+// setview parameter
+float	VF_MIN			= 1;	//(vector)
+float	VF_MIN_X		= 2;	//(float)
+float	VF_MIN_Y		= 3;	//(float)
+float	VF_SIZE			= 4;	//(vector) (viewport size)
+float	VF_SIZE_Y		= 5;	//(float)
+float	VF_SIZE_X		= 6;	//(float)
+float	VF_VIEWPORT		= 7;	//(vector, vector)
+float	VF_FOV			= 8;	//(vector)
+float	VF_FOVX			= 9;	//(float)
+float	VF_FOVY			= 10;	//(float)
+float	VF_ORIGIN		= 11;	//(vector)
+float	VF_ORIGIN_X		= 12;	//(float)
+float	VF_ORIGIN_Y		= 13;	//(float)
+float	VF_ORIGIN_Z		= 14;	//(float)
+float	VF_ANGLES		= 15;	//(vector)
+float	VF_ANGLES_X		= 16;	//(float)
+float	VF_ANGLES_Y		= 17;	//(float)
+float	VF_ANGLES_Z		= 18;	//(float)
+float	VF_DRAWWORLD		= 19;	//(float)
+float	VF_DRAWENGINESBAR	= 20;	//(float)
+float	VF_DRAWCROSSHAIR	= 21;	//(float)
+
+float	VF_CL_VIEWANGLES	= 33;	//(vector)
+float	VF_CL_VIEWANGLES_X	= 34;	//(float)
+float	VF_CL_VIEWANGLES_Y	= 35;	//(float)
+float	VF_CL_VIEWANGLES_Z	= 36;	//(float) 
+
+float	VF_PERSPECTIVE		= 200;
+
+float	LP_LIGHTMAP		= 1;
+float	LP_RTWORLD		= 2;
+float	LP_DYNLIGHT		= 4;
+float	LP_COMPLETE		= 7;
+
+// input events
+float	INPUT_KEYDOWN		= 0;
+float	INPUT_KEYUP		= 1;
+float	INPUT_MOUSEMOVE		= 2;
+
+// stats
+// 0 - 31 are reserved for standard engine stats
+// 32 - 128 are for QuakeC modders
+float	STAT_HEALTH		= 0;
+float	STAT_WEAPONMODEL	= 2;
+float	STAT_AMMO		= 3;
+float	STAT_ARMOR		= 4;
+float	STAT_WEAPONFRAME	= 5;
+float	STAT_SHELLS		= 6;
+float	STAT_NAILS		= 7;
+float	STAT_ROCKETS		= 8;
+float	STAT_CELLS		= 9;
+float	STAT_ACTIVEWEAPON	= 10;
+float	STAT_TOTALSECRETS	= 11;
+float	STAT_TOTALMONSTERS	= 12;
+float	STAT_SECRETS		= 13; 	// bumped on client side by svc_foundsecret
+float	STAT_MONSTERS		= 14; 	// bumped by svc_killedmonster
+float	STAT_ITEMS		= 15;
+float	STAT_VIEWHEIGHT		= 16;
+
+// Quake Sound Constants
+float	CHAN_AUTO		= 0;
+float	CHAN_WEAPON		= 1;
+float	CHAN_VOICE		= 2;
+float	CHAN_ITEM		= 3;
+float	CHAN_BODY		= 4;
+
+float	ATTN_NONE		= 0;
+float	ATTN_NORM		= 1;
+float	ATTN_IDLE		= 2;
+float	ATTN_STATIC		= 3;
+
+// Frik File Constants
+float	FILE_READ		= 0;
+float	FILE_APPEND		= 1;
+float	FILE_WRITE		= 2;
+
+// Quake Point Contents
+float	CONTENT_EMPTY		= -1;
+float	CONTENT_SOLID		= -2;
+float	CONTENT_WATER		= -3;
+float	CONTENT_SLIME		= -4;
+float	CONTENT_LAVA		= -5;
+float	CONTENT_SKY		= -6;
+
+// Quake Solid Constants
+float	SOLID_NOT		= 0;
+float	SOLID_TRIGGER		= 1;
+float	SOLID_BBOX		= 2;
+float	SOLID_SLIDEBOX		= 3;
+float	SOLID_BSP		= 4;
+float	SOLID_CORPSE		= 5;
+
+// Quake Move Constants
+float	MOVE_NORMAL		= 0;
+float	MOVE_NOMONSTERS		= 1;
+float	MOVE_MISSILE		= 2;
+
+// items
+float	IT_AXE				= 4096;
+float	IT_SHOTGUN			= 1;
+float	IT_SUPER_SHOTGUN		= 2;
+float	IT_NAILGUN			= 4;
+float	IT_SUPER_NAILGUN		= 8;
+float	IT_GRENADE_LAUNCHER		= 16;
+float	IT_ROCKET_LAUNCHER		= 32;
+float	IT_LIGHTNING			= 64;
+float	IT_EXTRA_WEAPON			= 128;
+
+float	IT_SHELLS			= 256;
+float	IT_NAILS			= 512;
+float	IT_ROCKETS			= 1024;
+float	IT_CELLS			= 2048;
+
+float	IT_ARMOR1			= 8192;
+float	IT_ARMOR2			= 16384;
+float	IT_ARMOR3			= 32768;
+float	IT_SUPERHEALTH			= 65536;
+
+float	IT_KEY1				= 131072;
+float	IT_KEY2				= 262144;
+
+float	IT_INVISIBILITY			= 524288;
+float	IT_INVULNERABILITY		= 1048576;
+float	IT_SUIT				= 2097152;
+float	IT_QUAD				= 4194304;
+
+// Boolean Constants
+float	TRUE			= 1;
+float	FALSE			= 0;
+
+float	EXTRA_LOW		= -99999999;
+float	EXTRA_HIGH		= 99999999;
+
+vector	VEC_1			= '1 1 1';
+vector	VEC_0			= '0 0 0';
+vector	VEC_M1			= '-1 -1 -1';
+
+float	M_PI			= 3.14159265358979323846;
+
+vector	VEC_HULL_MIN		= '-16 -16 -24';
+vector	VEC_HULL_MAX		= '16 16 32';
+
+// Quake Temporary Entity Constants
+float	TE_SPIKE		= 0;
+float	TE_SUPERSPIKE		= 1;
+float	TE_GUNSHOT		= 2;
+float	TE_EXPLOSION		= 3;
+float	TE_TAREXPLOSION		= 4;
+float	TE_LIGHTNING1		= 5;
+float	TE_LIGHTNING2		= 6;
+float	TE_WIZSPIKE		= 7;
+float	TE_KNIGHTSPIKE		= 8;
+float	TE_LIGHTNING3		= 9;
+float	TE_LAVASPLASH		= 10;
+float	TE_TELEPORT		= 11;
+float	TE_EXPLOSION2		= 12;
+
+// Darkplaces Additions
+float	TE_EXPLOSIONRGB		= 53;
+float	TE_GUNSHOTQUAD		= 57;
+float	TE_EXPLOSIONQUAD	= 70;
+float	TE_SPIKEQUAD		= 58;
+float	TE_SUPERSPIKEQUAD	= 59;
+	
+// PFlags for Dynamic Lights
+float	PFLAGS_NOSHADOW		= 1;
+float	PFLAGS_CORONA		= 2;
+float	PFLAGS_FULLDYNAMIC	= 128;
+
+float	EF_NODRAW		= 16;
+float	EF_ADDITIVE		= 32;
+float	EF_BLUE			= 64;
+float	EF_RED			= 128;
+float	EF_FULLBRIGHT		= 512;
+float	EF_FLAME		= 1024;
+float	EF_STARDUST		= 2048;
+float	EF_NOSHADOW		= 4096;
+float	EF_NODEPTHTEST		= 8192;
+float	EF_SELECTABLE		= 16384;
+
+// flags for 2d drawing
+float	DRAWFLAG_NORMAL		= 0;
+float	DRAWFLAG_ADDITIVE	= 1;
+float	DRAWFLAG_MODULATE	= 2;
+float	DRAWFLAG_2XMODULATE	= 3;
+float	DRAWFLAG_SCREEN		= 4;
+float	DRAWFLAG_MIPMAP		= 0x100; // only for R_BeginPolygon
+
+// player flags, calculated in 
+float	PFL_ONGROUND		= 1;
+float	PFL_CROUCH		= 2;
+float	PFL_DEAD		= 4;
+float	PFL_GIBBED		= 8;
+
+float	ENT_INVALID		= 0; // never used
+float	ENT_GAMESETTINGS	= 1; // provide game parameters such as frag limit, time limit, etc...
+float	ENT_PLAYER		= 2; // player entity (origin, aimdir, active weapon, etc)
+float	ENT_INVENTORYITEM	= 3; // inventory items in this player's inventory are networked this way

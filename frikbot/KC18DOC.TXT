@@ -1,0 +1,209 @@
+Title    : Kasuha's DeathMatch Camera
+Version  : 1.8
+Filename : kascam18.zip
+Date     : 6 Jul 1997
+Author   : Karel Suhajda aka KASUHA
+Email    : suhajda@serverpha.czcom.cz
+
+Note     : this patch is based on DMCAM and QCAM patches
+
+Type of Mod
+-----------
+Progs.dat: yes
+Sound    : no
+MDL      : no
+BSP      : no
+QC       : YES!!!
+
+Time spent: don't ask me, I don't know...
+
+--------------------------------------------------------------------------------
+* Credits
+
+- Id software for Quake
+- Rogier R. Mulhuijzen for DMCAM and its sources
+- Paul Jordan for QCAM and its sources
+- The NecroRaisers clan for betatesting
+- All you who sent me suggestions and help :-)
+
+--------------------------------------------------------------------------------
+* Introduction
+
+I have seen some demos done using DMCAM and QCAM and I got the idea to do it
+a better way.
+Then I have seen some demos taken using KasCam and I got the idea how to do it
+even better way...
+
+--------------------------------------------------------------------------------
+* Installation
+
+Put the progs.dat in a sub-dir of the server's quake-directory (kascam for
+example).
+
+--------------------------------------------------------------------------------
+* How to use the patch
+
+Start up the server with -game <kascam's dir>. If you called the dir "kascam"
+you would type:
+
+quake -game kascam
+
+Next, change the name of the client you want to use as the camera into
+"". You can do it at console typing NAME "".
+You can still use old "CamClient" name also, but "" will not appear in the
+score table.
+When that client connects it is automaticaly turned into the
+camera. It is a good idea to run the camera on a listen server.
+You can also turn normal player to camera using "IMPULSE 250" command
+without renaming.
+If you don't want to see CamClient in results table, change its name to ""
+
+Every player can change to camera now! There is no limit on one camera per game!
+
+I don't recommend too many cameras in a game - camera code is highly processor
+intensive and you will get a slowdown or even 'runaway loop error'.
+
+--------------------------------------------------------------------------------
+* How it works
+
+The player turns to camera-man when his name is "" or "CamClient" during
+connect or when he types "impulse 250" on console.
+
+The camera has eight working modes - five automatic and three manual.
+
+o IDLE mode: camera flies randomly in the current room. This mode is used only
+  when there is no live player in the level.
+  When there appears any live player, camera enters the next mode:
+
+o FLYBY mode: generates in the vicinity of targeted player and
+  looks on him until he escapes round a corner or until he is too far
+  away. Then a new camera is generated. When a player is near the camera
+  (up to 200) and he is facing away, camera enters the next mode:
+
+o FOLLOW mode: follows targeted player everywhere he goes. When the player
+  disappears (thru a teleport or under/off water), camera switches to FLYBY.
+
+o FIXED mode: used automatically from FLYBY mode when there is enough players
+  visible at the same time. Tries to see as many players as possible, doesn't
+  concentrate on single player. When here is less than two players visible
+  for more than three seconds, camera searches for a new individual target. 
+  If this mode is entered automatically, it lasts no more than 15 seconds.
+
+o DEATH mode: selected automatically when targeted player turns dead. Tracks
+  dead body or head and focuses on it. Reports player's name and frag count.
+  This mode is not manually selectible.
+
+o HAND mode: camera is unmovable but you can look around using controls.
+
+o FLY mode: 'flying' camera - can't go thru walls. Moves slowly.
+
+o NOCLIP mode: figure yourself.
+
+
+When a player is targeted, camera shows also his status - weapons, ammo, armor,
+health, keys. It doesn't show items which change the view color (biosuit,
+pentagram, ring, quad).
+
+Camera reports a new "victim" by its name and frag count. This is reported
+to camera only. You can turn it off.
+
+When the camera selects a player, it pursuits him 60 seconds or until death
+if it comes sooner :-) Camera swaps FLYBY/FOLLOW mode or can swap to FIXED
+mode when there are many players visible. Camera goes to DEATH mode when its
+target die.
+
+The selected player is always a live player. Selecting criteria is randomly
+selected from following possibilities:
+20% most frags
+20% most health (max damage player can bear, counting current health and armor)
+60% random selection
+
+The CamClient can also control the camera:
+
+IMPULSE 100: Select automatically a new target.
+IMPULSE 1xx: Select xx-th player in order they connected. Starts in FLYBY.
+             (CamClient is not a player)
+             Doesn't switch to a new target if it is dead or dying.
+IMPULSE 18x: Store current camera position to memory x (0 to 9).
+IMPULSE 19x: Restore camera position from memory x. Works only in
+             non-automatic modes.
+IMPULSE 200: Force FLYBY mode on current target (may immediately turn to
+             FOLLOW) When no target is selected camera chooses a player
+             nearest to the screen centre. When here is nobody visible
+             nothing happens.
+IMPULSE 201: Force FOLLOW mode on current target.
+             When no target is selected camera chooses a player nearest to the
+             screen centre. When here is nobody visible nothing happens.
+IMPULSE 202: Force HAND mode. Also moves camera to the point it is aiming at
+             (not if in FLYBY or FIXED mode).
+             You can move camera in HAND mode using IMPULSE 202.
+IMPULSE 203: Force FLY mode.
+IMPULSE 204: Force NOCLIP mode.
+IMPULSE 205: Force FIXED mode.
+IMPULSE 210: Turn "NOW TAKING" and "R.I.P." messages off/on.
+IMPULSE 211: Reports current camera position. Somebody wanted it...
+IMPULSE 212: Turn "NOW TAKING" and "R.I.P." messages ON
+IMPULSE 213: Turn "NOW TAKING" and "R.I.P." messages OFF
+IMPULSE 214: Always force FOLLOW mode - when a new player is selected, camera
+             immediately goes to FOLLOW mode.
+IMPULSE 215: Stop 'always force FOLLOW' - camera behaves normally from now on.
+IMPULSE 216: Lock on current target. No other target is selected until
+             IMPULSE 100 or IMPULSE 1xx is used. Designed to take demos
+             of individual people (e.g. during a final match :-)
+IMPULSE 217: Skip to next player. If the current player is locked using
+             IMPULSE 216, lock is moved also. Skips all non-live targets.
+             When no target is selected, nothing happens.
+IMPULSE 250: Turn to camera if you aren't already.
+
+NOTE: Described IMPULSEs excluding IMPULSE 250 work for camera only.
+      IMPULSE 250 works for non-cameras only.
+      Standard impulses work for non-cameras only.
+
+------------------------------------------------------------------------------
+* Known bugs
+
+- Camera may not have any good spot points in FOLLOW/FLYBY. Then it behaves
+  like IDLE though a target is selected. This is *very* unlikely to happen.
+- Camera sometimes loses contact with its target on a lift in FLYBY mode.
+- Camera doesn't move to intermission spot during intermission.
+
+I am not sure if these can be considered 'bugs'. I call it 'minor problems' ;-)
+
+A real bug:
+- Sometimes camera does "automatic centerview". Don't know why it happens.
+  A workaround: enter both "+LOOKUP" and "+LOOKDOWN" at the console.
+  This may interfere with manual modes.
+  Really don't know how to remove this :-(
+
+------------------------------------------------------------------------------
+* short FAQ
+
+Q: Can I use KasCam on single computer?
+A: No. Well, you can, but you'll have nothing to take. KasCam is one player
+   converted to camera so on single computer you'll have nobody to do any
+   action. You can only make demo of monsters walking thru corridors :-)
+
+Q: Can I use KasCam take my single-player game?
+A: Yes, but you need two computers. One to play on and one for camera. You can
+   start in coop and then turn the second player to camera.
+
+Q: How can I remove CamClient from score table?
+A: Change its name to "". You can do it both before or after starting the
+   camera.
+
+Q: How can I switch to a saved position if I am in automatic mode?
+A: Use the following: "IMPULSE 203;WAIT;IMPULSE 19x". It first changes to FLY
+   mode (camera doesn't move) and then to your selected saved position.
+
+------------------------------------------------------------------------------
+* Copyright and Distribution Permissions (I like these from DMCAM so here goes:)
+
+Authors MAY use these modifications as a basis for other
+publically available work, after all, I did.
+
+You may distribute this Quake modification in any free electronic format
+as long as this description file remains intact and unmodified and is
+retained along with all of the files in the archive.
+
+You may not publish or distribute this Quake modification in a non-free
+form without the permission of the author.

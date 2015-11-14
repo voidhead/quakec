@@ -1,0 +1,41 @@
+//================================================
+// powerup timers
+//================================================
+float	drawque[6];
+float	DRAWQUE_SIZE	= 6;
+
+vector	QUADCOLOR	= '0.55 0.55 0.80';	//139 139 203			//'0.30 0.30 0.45';	//77 77 115 
+vector	PENTCOLOR	= '0.90 0.15 0.04';	//230 38 10				//'0.47 0 0';
+vector	RADCOLOR	= '0.17 0.37 0.17';	//43 94 43 
+vector	INVCOLOR	= '1.00 1.00 1.00';
+vector	WETSUITCOLOR	= '0.44 0.51 0.48';	//111 131 123
+vector	EMPATHYCOLOR	= '0.87 0.67 0.15';	//223 171 39
+
+const	float	STAT_QUADTIME	= 32;
+const	float	STAT_PENTTIME	= 33;
+const	float	STAT_SUITTIME	= 34;
+const	float	STAT_INVISTIME	= 35;
+const	float	STAT_WETTIME	= 36;
+const	float	STAT_EMPTIME	= 37;
+
+void(vector pos, float type, vector rgb) DrawPowerupTime;
+
+void() Sbar_DrawPowerupTimers =
+{
+	local vector pwuporg;
+
+	pwuporg_x = vid_conwidth - 48;
+	pwuporg_y = vid_conheight - 72;
+										//vid_conwidth - 48, vid_conheight - 72
+//	DrawPowerupTime(pwuporg, STAT_QUADTIME,  QUADCOLOR);			//'592 408 0'
+//	DrawPowerupTime(pwuporg, STAT_PENTTIME,  PENTCOLOR);
+//	DrawPowerupTime(pwuporg, STAT_SUITTIME,  RADCOLOR);
+//	DrawPowerupTime(pwuporg, STAT_INVISTIME, INVCOLOR);
+
+	DrawPowerupTime(pwuporg, STAT_QUADTIME,  QUADCOLOR);
+	DrawPowerupTime(pwuporg, STAT_PENTTIME,  PENTCOLOR);
+	DrawPowerupTime(pwuporg, STAT_SUITTIME,  RADCOLOR);
+	DrawPowerupTime(pwuporg, STAT_INVISTIME, INVCOLOR);
+	DrawPowerupTime(pwuporg, STAT_WETTIME,   WETSUITCOLOR);
+	DrawPowerupTime(pwuporg, STAT_EMPTIME,   EMPATHYCOLOR);
+};

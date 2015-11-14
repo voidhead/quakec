@@ -1,0 +1,17 @@
+csprogs.dat
+
+common/csdefs.qh
+common/csconstants.qh
+common/csextensions.qc
+common/keycodes.qh
+
+client_id1/vars.qh
+client_id1/weaponslots.qh
+client_id1/powerups.qh
+
+client_id1/weaponchanger.qc
+client_id1/poweruptimers.qc
+client_id1/volumecontrol.qc
+client_id1/chasecam.qc
+
+client_id1/main.qc

@@ -1,0 +1,3 @@
+float 	IT_MJOLNIR		= 128;
+float 	IT_LASER_CANNON		= 8388608;
+float 	IT_PROXIMITY_GUN	= 65536;

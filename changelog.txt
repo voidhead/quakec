@@ -1,0 +1,88 @@
+r1 committed on Oct 1, 2014
+there goes
+
+r2 committed on Oct 2, 2014
+id1
+- shambler lightning origin now properly follows his frames
+- glowingclaws appear one frame later
+- a plug to stop him from smashing corpses (annoying)
+- some gibs touch optimizing
+- SpawnBlood_Expl more bloody
+- more gibs for large monsters
+
+r3 committed on Oct 2, 2014
+id1
+- errors in builtin declarations (findchain_*tofield), which freaked fteqcc out somehow
+
+id1/frikbot
+- straightened out borking of frikbot due to deathcam/bodyque logic (cause was unhandled MOVETYPE_FOLLOW in bot physics)
+- fresh bodyque spawns seemed to mess with RadiusDamage iteration (now they don't take damage immediately)
+- put RadiusDamage on separate .chain for more stability (just in case)
+- shotgun shells in dm disappear real quick
+
+
+r4 committed on Oct 17, 2014
+common
+- misc formatting tweaks here and there
+
+id1
+- big ugly hack attempt to propetly initialize info_notnulls from custom maps (make them init new thinkers, fields, etc)
+doesn't exactly work as it should atm.
+
+r5 committed on Oct 23, 2014
+id1
+subs.qc:
+- rewrote SUB_Fadeaway: has new own fields and should be more efficient now. changed all occurences accordingly
+- changed SUB_CheckRefire and SUB_AttackFinished to use their own special field, as i was way too liberal with .cnt everywhere
+
+weapon_projectile.qc
+- wallspikes shot by trap_shooters now look for existing ones at the same .origin and remone them (framerate hog of sorts)
+- shell casings stop emitting smoke upon coming to a stop
+
+hipnotic
+weapons.qc
+- hiplaser didn't have quad hit effect
+
+r6 committed on Oct 29, 2014
+id1
+- monster_general.qc: rewrote monster_start functions more in vein with the default ones (non-authentic think timing always kinda rubbed me the wrong way)
+- monster_movement.qc, ent_misc.qc: (supposed optimisation) a new function for actual client los checking; to be used by smoke spawners, maybe other effects
+- weapon_projectile.qc, ent_misc.qc: added EF_LOWPRECISION to shell casings and smokers
+- utils.qc: anglemod functions have more sensible names now
+
+frikbot
+- added global variable for waypoint location path
+
+
+r7 committed on Dec 12, 2014
+id1
+- info_notnull fuckery removed
+
+hipnotic
+- hipnotic's gremlin didn't spend ammo when firing grenades
+
+r8 committed on Feb 17, 2015
+added zer client & server, attempting to fix some bugs under dp
+
+r9 committed on Feb 17, 2015
+id1
+cheats.qc:
+- added BotCheat (godmode + impulse 9 + permanent quad to bots in coop; godmode doesn't seem to work although it directly gives the flag)
+triggers.qc:
+- reworked trigger_hurt affecting multiple targets at once (some simple and sensible logic now. the uqp version which i had previously was borked all over but it did work *somehow*. never bothered to check myself though)
+
+zer
+- swapped some weaponslots in client
+- forgot to comment some lines in changeweapon
+
+r10 committed on Nov 18, 2015
+radical restructuring of the codesource
+- battleship game test (a competition struck during drinking)
+- integrated Qonquer mod, tweaks here and there
+- tests of water discharge (proper electrocution in a body of water) 
+- added idle frames for tarbaby
+- colored blood and gibs for wizard and tarbaby
+- added knights' swing miss and slash sounds
+- cool new ogre mortar code
+- shootable and gibbable crucified zombies
+- many many other tweaks
